@@ -17,9 +17,16 @@ public:
     ImageView( ImageView&& other );
     virtual ~ImageView() override = default;
 
+    const QColor& getBackgroungColor() const;
+    Qt::AspectRatioMode getAspectRatioMode() const;
+    Qt::Alignment getAlignment() const;
+
 signals:
 
 public slots:
+    void setBackgroundColor( const QColor& color );
+    void setAspectRatioMode( Qt::AspectRatioMode mode );
+    void setAlignment( Qt::Alignment alignment );
     void setImage( std::shared_ptr< QImage > image );
 
 protected:
@@ -27,7 +34,9 @@ protected:
 
 private:
     std::shared_ptr< QImage > image;
-
+    QColor backgroundColor;
+    Qt::AspectRatioMode aspectRatioMode;
+    Qt::Alignment alignment;
 };
 
 #endif /// IMAGE_VIEW_HPP
