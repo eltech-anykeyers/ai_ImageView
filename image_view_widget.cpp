@@ -1,8 +1,8 @@
-#include "image_view.hpp"
+#include "image_view_widget.hpp"
 
 #include <QPainter>
 
-ImageView::ImageView( QWidget* parent )
+ImageViewWidget::ImageViewWidget( QWidget* parent )
     : QWidget( parent )
 {
     image = nullptr;
@@ -11,38 +11,38 @@ ImageView::ImageView( QWidget* parent )
     alignment = Qt::AlignCenter;
 }
 
-ImageView::ImageView(
+ImageViewWidget::ImageViewWidget(
     std::shared_ptr< QImage > image, QWidget* parent )
-    : ImageView( parent )
+    : ImageViewWidget( parent )
 {
     this->setImage( image );
     this->repaint();
 }
 
-ImageView::ImageView( const ImageView& other )
-    : ImageView( other.image )
+ImageViewWidget::ImageViewWidget( const ImageViewWidget& other )
+    : ImageViewWidget( other.image )
 {}
 
-ImageView::ImageView( ImageView&& other )
-    : ImageView( other.image )
+ImageViewWidget::ImageViewWidget( ImageViewWidget&& other )
+    : ImageViewWidget( other.image )
 {}
 
-const QColor& ImageView::getBackgroungColor() const
+const QColor& ImageViewWidget::getBackgroungColor() const
 {
     return backgroundColor;
 }
 
-Qt::AspectRatioMode ImageView::getAspectRatioMode() const
+Qt::AspectRatioMode ImageViewWidget::getAspectRatioMode() const
 {
     return aspectRatioMode;
 }
 
-Qt::Alignment ImageView::getAlignment() const
+Qt::Alignment ImageViewWidget::getAlignment() const
 {
     return alignment;
 }
 
-void ImageView::setBackgroundColor( const QColor& color )
+void ImageViewWidget::setBackgroundColor( const QColor& color )
 {
     if( color != backgroundColor )
     {
@@ -51,7 +51,7 @@ void ImageView::setBackgroundColor( const QColor& color )
     }
 }
 
-void ImageView::setAspectRatioMode( Qt::AspectRatioMode mode )
+void ImageViewWidget::setAspectRatioMode( Qt::AspectRatioMode mode )
 {
     if( mode != aspectRatioMode )
     {
@@ -59,7 +59,7 @@ void ImageView::setAspectRatioMode( Qt::AspectRatioMode mode )
     }
 }
 
-void ImageView::setAlignment( Qt::Alignment alignment )
+void ImageViewWidget::setAlignment( Qt::Alignment alignment )
 {
     if( this->alignment != alignment )
     {
@@ -67,12 +67,12 @@ void ImageView::setAlignment( Qt::Alignment alignment )
     }
 }
 
-void ImageView::setImage( std::shared_ptr< QImage > image )
+void ImageViewWidget::setImage( std::shared_ptr< QImage > image )
 {
     this->image = image;
 }
 
-void ImageView::paintEvent( QPaintEvent* /*event*/ )
+void ImageViewWidget::paintEvent( QPaintEvent* /*event*/ )
 {
     QPainter painter( this );
 

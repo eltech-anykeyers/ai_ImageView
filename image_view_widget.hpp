@@ -5,17 +5,17 @@
 
 #include <memory>
 
-class ImageView : public QWidget
+class ImageViewWidget : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit ImageView( QWidget* parent = Q_NULLPTR );
-    explicit ImageView( std::shared_ptr< QImage > image,
+    explicit ImageViewWidget( QWidget* parent = Q_NULLPTR );
+    explicit ImageViewWidget( std::shared_ptr< QImage > image,
                         QWidget* parent = Q_NULLPTR );
-    ImageView( const ImageView& other );
-    ImageView( ImageView&& other );
-    virtual ~ImageView() override = default;
+    ImageViewWidget( const ImageViewWidget& other );
+    ImageViewWidget( ImageViewWidget&& other );
+    virtual ~ImageViewWidget() override = default;
 
     const QColor& getBackgroungColor() const;
     Qt::AspectRatioMode getAspectRatioMode() const;
