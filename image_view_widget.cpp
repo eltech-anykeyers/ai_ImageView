@@ -87,7 +87,7 @@ void ImageViewWidget::paintEvent( QPaintEvent* /*event*/ )
     auto scaledImage =
         image->scaled( this->size(), aspectRatioMode );
 
-    /// Get offsets.
+    /// Compute offsets.
     int x = 0, y = 0;
     if( alignment & Qt::AlignLeft )
         x = 0;
